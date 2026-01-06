@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Toolkit - Your Path to Success</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+           background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .nav-btn {
+            background: white;
+            border: none;
+            padding: 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn.resume { border-left: 5px solid #28a745; }
+        .nav-btn.photo { border-left: 5px solid #007bff; }
+        .nav-btn.skills { border-left: 5px solid #ffc107; }
+        .nav-btn.study { border-left: 5px solid #17a2b8; }
+        .nav-btn.jobs { border-left: 5px solid #dc3545; }
+        .nav-btn.tools { border-left: 5px solid #6f42c1; }
+        
+        .nav-btn .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .nav-btn h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .nav-btn p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .section {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section h2 {
+            color: #001f3f;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #001f3f;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .prompt-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            position: relative;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #764ba2;
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .example-box {
+            background: #e7f3ff;
+            border-left: 5px solid #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .tool-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .tool-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn:hover {
+            background: #5a6268;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .highlight {
+            background: yellow;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .nav-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AI Career Toolkit</h1>
+            <p>Your Complete Guide to Success with Artificial Intelligence</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Free Tools • Step-by-Step Guides • No Experience Needed</p>
+        </header>
+
+        <!-- HOME SECTION -->
+        <div id="home" class="section active">
+            <h2>Welcome! Start Your Journey Here 👋</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                This website will help you create a professional resume, build skills, study for exams, and find jobs - all using FREE AI tools. 
+                Everything is explained in simple steps. <strong>Click any box below to start:</strong>
+            </p>
+
+            <div class="nav-buttons">
+                <button class="nav-btn resume" onclick="showSection('resume')">
+                    <div class="icon">📄</div>
+                    <h3>Build Your Resume</h3>
+                    <p>Create professional resume in 10 minutes</p>
+                </button>
+
+                <button class="nav-btn photo" onclick="showSection('photo')">
+                    <div class="icon">📸</div>
+                    <h3>Professional Photo</h3>
+                    <p>Make AI headshot for jobs</p>
+                </button>
+
+                <button class="nav-btn skills" onclick="showSection('skills')">
+                    <div class="icon">🎯</div>
+                    <h3>Learn Any Skill</h3>
+                    <p>Use AI to learn typing, English, repair & more</p>
+                </button>
+
+                <button class="nav-btn study" onclick="showSection('study')">
+                    <div class="icon">📚</div>
+                    <h3>Study with AI</h3>
+                    <p>Free AI tutors for any subject</p>
+                </button>
+
+                <button class="nav-btn jobs" onclick="showSection('jobs')">
+                    <div class="icon">💼</div>
+                    <h3>Find Jobs</h3>
+                    <p>Search and apply for jobs online</p>
+                </button>
+
+                <button class="nav-btn tools" onclick="showSection('tools')">
+                    <div class="icon">🛠️</div>
+                    <h3>Free AI Tools</h3>
+                    <p>All the AI websites you can use</p>
+                </button>
+            </div>
+
+            <div class="success-box">
+                <h3>💡 New to AI? Start Here:</h3>
+                <p><strong>Step 1:</strong> Click "Build Your Resume" first</p>
+                <p><strong>Step 2:</strong> Then create your "Professional Photo"</p>
+                <p><strong>Step 3:</strong> Explore other sections when ready</p>
+            </div>
+        </div>
+
+        <!-- RESUME SECTION -->
+        <div id="resume" class="section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Home</button>
+            <h2>📄 Build Your Professional Resume</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                A resume is a document that shows your education, skills, and experience to employers. 
+                Follow these simple steps to create yours in 10 minutes!
+            </p>
+
+            <h3>Step 1: Copy This Prompt</h3>
+            <p>Click the blue "Copy" button below. This is what you will paste into AI tools.</p>
+            
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'resumePrompt')">📋 Copy</button>
+                <div id="resumePrompt">Create a professional resume for me in a clean, organized format. Here is my information:
+
+<strong>PERSONAL DETAILS:</strong>
+Name: [Write your full name here]
+Age: [Your age]
+Location: [Your area], Hyderabad, Telangana
+Phone: [Your mobile number]
+Email: [Your email if you have one, otherwise write "Available on request"]
+
+<strong>EDUCATION:</strong>
+[Example: 10th Pass, ABC High School, Hyderabad, 2023]
+[Example: ITI in Electrician, Government ITI Sanathnagar, 2024]
+[Write all your education from 10th onwards]
+
+<strong>WORK EXPERIENCE:</strong>
+[If you worked anywhere, write: Job title - Company name - What you did - Duration]
+[If no work experience, write: "Fresher - Looking for first job opportunity"]
+
+<strong>SKILLS:</strong>
+[Example: Basic computer knowledge, MS Office, English speaking, Customer service]
+[Write minimum 4-5 skills you have]
+
+<strong>LANGUAGES:</strong>
+Telugu (Fluent), Hindi (Good), English (Basic)
+[Edit based on what you know]
+
+<strong>JOB TYPE LOOKING FOR:</strong>
+[Example: Shop Assistant, Office Helper, Delivery Boy, Computer Operator, Any entry-level position]
+
+Please create a clean, professional resume that highlights my strengths and makes me look good to employers. Format it properly with clear sections.</div>
+            </div>
+
+            <h3>Step 2: Go to Free AI Tool</h3>
+            <p>Open one of these websites (they are FREE):</p>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>ChatGPT (Best Option)</h4>
+                    <p>Website: <a href="https://chat.openai.com" target="_blank">chat.openai.com</a></p>
+                    <p>✓ No login needed for basic use</p>
+                    <p>✓ Very smart AI</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>Website: <a href="https://gemini.google.com" target="_blank">gemini.google.com</a></p>
+                    <p>✓ Works with Gmail account</p>
+                    <p>✓ Fast and reliable</p>
+                </div>
+            </div>
+
+            <h3>Step 3: Paste and Fill Your Details</h3>
+            <div class="example-box">
+                <p><strong>What to do:</strong></p>
+                <ol>
+                    <li>Paste the prompt you copied</li>
+                    <li>Replace ALL the <span class="highlight">[brackets]</span> with YOUR real information</li>
+                    <li>Delete any example text and write your own</li>
+                    <li>Press Enter or Send button</li>
+                </ol>
+            </div>
+
+            <h3>Step 4: AI Creates Your Resume!</h3>
+            <p>In 10-20 seconds, AI will create a beautiful professional resume for you. You can:</p>
+            <ul>
+                <li>Copy it to Microsoft Word or Google Docs</li>
+                <li>Ask AI: "Make it shorter" or "Add more details about my skills"</li>
+                <li>Save it as PDF to send to companies</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Important Tips:</h4>
+                <ul>
+                    <li>Always write TRUE information only</li>
+                    <li>If you don't have email, write "Available on request"</li>
+                    <li>Update your resume when you learn new skills</li>
+                    <li>Keep it to 1 page only (not too long)</li>
+                </ul>
+            </div>
+
+            <h3>Example Resume (For Reference)</h3>
+            <div class="example-box">
+                <h4 style="text-align: center; color: #333;">RAVI KUMAR</h4>
+                <p style="text-align: center;">Malakpet, Hyderabad | 9876543210 | ravi.kumar@email.com</p>
+                
+                <h4 style="margin-top: 15px;">EDUCATION</h4>
+                <p>• SSC (10th Pass) - Government High School, Hyderabad (2022)</p>
+                <p>• ITI Certificate in Computer Operator - Government ITI Malakpet (2024)</p>
+                
+                <h4>SKILLS</h4>
+                <p>• Basic Computer Operations (MS Word, Excel, PowerPoint)</p>
+                <p>• Data Entry - Typing Speed 30 WPM</p>
+                <p>• Customer Service and Communication</p>
+                <p>• Quick Learner, Punctual and Hardworking</p>
+                
+                <h4>LANGUAGES</h4>
+                <p>• Telugu (Native), Hindi (Fluent), English (Basic)</p>
+                
+                <h4>OBJECTIVE</h4>
+                <p>Looking for entry-level position where I can use my computer skills and learn new things. Ready to work hard and grow with the company.</p>
+            </div>
+
+            <button class="btn-primary" onclick="showSection('photo')">Next: Create Professional Photo →</button>
+        </div>
+
+        <!-- PHOTO SECTION -->
+        <div id="photo" class="section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Home</button>
+            <h2>📸 Create Professional Headshot Photo</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                A professional photo helps you look good on your resume and job applications. 
+                We'll use <strong>Nano Banana</strong> - a FREE AI tool that creates professional photos!
+            </p>
+
+            <h3>What is Nano Banana?</h3>
+            <div class="success-box">
+                <p><strong>Nano Banana</strong> is an AI tool that creates realistic professional photos based on your description.</p>
+                <p>🌐 Website: Search "Nano Banana AI" on Google</p>
+                <p>💰 Cost: FREE to use</p>
+                <p>⏱️ Time: Creates photo in 30-60 seconds</p>
+            </div>
+
+            <h3>How to Use Nano Banana (Step by Step)</h3>
+            <div class="example-box">
+                <ol style="font-size: 1.05em;">
+                    <li><strong>Open Nano Banana</strong> website on computer/phone</li>
+                    <li><strong>Look for text box</strong> where you type description</li>
+                    <li><strong>Copy one prompt</strong> from below (click Copy button)</li>
+                    <li><strong>Paste in Nano Banana</strong> and click Generate</li>
+                    <li><strong>Wait 30-60 seconds</strong> for AI to create photo</li>
+                    <li><strong>Download</strong> the photo you like best</li>
+                </ol>
+            </div>
+
+            <h3>📋 Professional Headshot Prompts (Copy & Use)</h3>
+            <p>Choose any prompt below based on type of job you want:</p>
+
+            <h4 style="color: #28a745;">For Office Jobs:</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'photo1')">📋 Copy</button>
+                <div id="photo1">Professional Indian male, 18 years old, wearing formal white shirt, clean grey background, confident smile, office setting, clear face, natural lighting, head and shoulders portrait, corporate style</div>
+            </div>
+
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'photo2')">📋 Copy</button>
+                <div id="photo2">Young professional man, neat haircut, blue collar shirt, plain white background, friendly expression, passport photo style, clear professional photo, Indian youth</div>
+            </div>
+
+            <h4 style="color: #007bff;">For Any Job Type:</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'photo3')">📋 Copy</button>
+                <div id="photo3">Indian youth professional photo, formal attire, solid background, head and shoulders, corporate style, neat appearance, confident look, suitable for resume</div>
+            </div>
+
+            <h4 style="color: #dc3545;">For Shop/Retail Work:</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'photo4')">📋 Copy</button>
+                <div id="photo4">Retail worker portrait, young Indian male wearing neat casual shirt, welcoming smile, shop background, professional but friendly, customer service style</div>
+            </div>
+
+            <h4 style="color: #ffc107;">For Technical/Skilled Jobs:</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'photo5')">📋 Copy</button>
+                <div id="photo5">Technical worker professional photo, Indian youth wearing work shirt, confident expression, workshop background, skilled worker portrait, neat appearance</div>
+            </div>
+
+            <h4 style="color: #17a2b8;">Smart Casual Look:</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'photo6')">📋 Copy</button>
+                <div id="photo6">Young Indian man, smart casual look, outdoors professional photo, natural background, confident friendly expression, suitable for modern workplace</div>
+            </div>
+
+            <div class="warning-box">
+                <h4>✅ Photo Do's and Don'ts</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+                    <div>
+                        <h4 style="color: #28a745;">✓ DO:</h4>
+                        <ul>
+                            <li>Use formal or neat clothing description</li>
+                            <li>Ask for plain background</li>
+                            <li>Request clear face and good lighting</li>
+                            <li>Try 2-3 different prompts</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #dc3545;">✗ DON'T:</h4>
+                        <ul>
+                            <li>Use casual party clothing words</li>
+                            <li>Add sunglasses or caps</li>
+                            <li>Make photo too dark or blurry</li>
+                            <li>Use same photo everywhere without permission</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>What If Photo Doesn't Look Good?</h3>
+            <p><strong>Simply try again!</strong> You can:</p>
+            <ul>
+                <li>Change words in prompt (like "serious" instead of "smile")</li>
+                <li>Try different background color ("blue background" or "office background")</li>
+                <li>Generate 3-4 photos and pick the best one</li>
+                <li>Ask caregiver or friend which photo looks most professional</li>
+            </ul>
+
+            <button class="btn-primary" onclick="showSection('skills')">Next: Learn New Skills with AI →</button>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <div id="skills" class="section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Home</button>
+            <h2>🎯 Learn Any Skill with AI</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                AI can teach you ANY skill for FREE - like having a personal tutor available 24/7! 
+                Below are prompts for skills that help you get jobs. Copy, paste into ChatGPT/Gemini, and start learning!
+            </p>
+
+            <div class="success-box">
+                <h3>💡 How This Works:</h3>
+                <p>1. Pick a skill you want to learn from below</p>
+                <p>2. Copy the prompt (click Copy button)</p>
+                <p>3. Paste into ChatGPT or Google Gemini</p>
+                <p>4. AI will teach you step-by-step!</p>
+                <p>5. You can ask AI questions anytime</p>
+            </div>
+
+            <h3>🔹 Skill 1: Learn Basic English</h3>
+            <p><strong>Why learn this?</strong> English helps in almost every job - office, shop, hotel, customer service.</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'skill1')">📋 Copy</button>
+                <div id="skill1">I am from India and speak Telugu. I want to learn basic English for getting a job. Please teach me:
+
+1. Common greetings and polite phrases (Hello, Thank you, Excuse me, etc.)
+2. How to introduce myself in English
+3. Basic sentences for shop/office work
+4. Numbers, days, months in English
+5. Simple job interview answers
+
+Give me lessons I can practice every day. Start with Day 1 lesson. Make it very simple and include Telugu translations where needed. After I learn this, give me Day 2 lesson.</div>
+            </div>
+
+            <h3>🔹 Skill 2: Learn Computer Typing</h3>
+            <p><strong>Why learn this?</strong> Fast typing is needed for data entry, office work, computer operator jobs.</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'skill2')">📋 Copy</button>
+                <div id="skill2">I want to learn computer keyboard typing in English. I am a complete beginner. Please teach me:
+
+1. Show me the keyboard layout with all keys
+2. Explain which fingers should press which keys (finger placement)
+3. Give me 10 simple practice sentences to type
+4. Teach me how to type without looking at keyboard
+5. Tell me free websites where I can practice typing speed
+6. Give me tips to improve from 20 WPM to 40 WPM
+
+Start with basics and give me practice exercises. I want to become fast typist for data entry jobs.</div>
+            </div>
+
+            <h3>🔹 Skill 3: Learn Mobile Phone Repair</h3>
+            <p><strong>Why learn this?</strong> Mobile repair shops always need helpers. Good skill for self-employment too.</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'skill3')">📋 Copy</button>
+                <div id="skill3">I want to learn basic mobile phone repair to get a job or start small business. Please teach me:
+
+1. What are main parts inside a mobile phone? (screen, battery, motherboard, etc.)
+2. Common problems customers bring (broken screen, battery issue, water damage, charging problem)
+3. Basic tools I need to start (screwdrivers, opening tools, etc.) and where to buy them cheap
+4. Safety tips when handling phones and batteries
+5. How to diagnose simple problems
+6. Where can I learn more or get certified in Hyderabad?
+7. How much can I earn as mobile repair technician?
+
+Explain everything in simple language with examples. Start with the basics.</div>
+            </div>
+
+            <h3>🔹 Skill 4: Learn Basic Cooking/Hotel Work</h3>
+            <p><strong>Why learn this?</strong> Restaurants, hotels, and catering always need cooks and kitchen helpers.</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'skill4')">📋 Copy</button>
+                <div id="skill4">I want to learn basic cooking and food preparation for hotel/restaurant jobs. Please teach me:
+
+1. Basic kitchen safety rules
+2. Common cooking terms used in hotels (chop, dice, sauté, boil, fry, etc.)
+3. How to prepare 5 simple dishes that hotels make daily
+4. Food hygiene and cleanliness rules
+5. How to work as kitchen helper or assistant cook
+6. Career path: Helper → Cook → Head Cook (how to grow)
+7. What skills do hotels look for when hiring?
+
+I want to start as kitchen helper and learn on the job. Give me practical knowledge.</div>
+            </div>
+
+            <h3>🔹 Skill 5: Learn Shop Keeping & Billing</h3>
+            <p><strong>Why learn this?</strong> Every shop needs someone who can handle customers and do billing.</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'skill5')">📋 Copy</button>
+                <div id="skill5">I want to learn shop keeping and billing work to get job in retail shop. Please teach me:
+
+1. How to talk to customers politely and help them
+2. How to use calculator for billing (addition, subtraction, finding total)
+3. How to give correct change to customers
+4. Basic inventory work (counting stock, noting what is sold)
+5. Common billing software used in shops (how they work)
+6. How to handle cash and keep it safe
+7. Good behavior with customers even when they are difficult
+
+I want to work in supermarket, clothing shop, or medical store. Give practical examples.</div>
+            </div>
+
+            <h3>🎓 Master Template: Learn ANYTHING with AI</h3>
+            <p>Want to learn something else? Use this template and fill in your skill:</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'masterSkill')">📋 Copy</button>
+                <div id="masterSkill">I want to learn [WRITE YOUR SKILL HERE] because I want to get a job in this field. I am a beginner with no experience.
+
+Please teach me:
+1. What is [SKILL] and why is it important?
+2. Basic concepts I need to know
+3. Step-by-step learning path (what to learn first, second, third...)
+4. Practical exercises I can do to practice
+5. What tools or equipment do I need?
+6. How can I get job using this skill?
+7. Free resources where I can learn more
+
+Make everything very simple and give me examples. Start with the basics and help me learn gradually.</div>
+            </div>
+
+            <div class="warning-box">
+                <h4>💪 Tips for Learning with AI:</h4>
+                <ul>
+                    <li><strong>Ask questions!</strong> If you don't understand, ask AI "explain in simpler way"</li>
+                    <li><strong>Practice daily</strong> - Even 30 minutes every day is enough</li>
+                    <li><strong>Go slow</strong> - Master one topic before moving to next</li>
+                    <li><strong>Ask for examples</strong> - Say "give me more examples" if needed</li>
+                    <li><strong>Test yourself</strong> - Ask AI "give me quiz on this topic"</li>
+                </ul>
+            </div>
+
+            <button class="btn-primary" onclick="showSection('study')">Next: Study for Exams with AI →</button>
+        </div>
+
+        <!-- STUDY SECTION -->
+        <div id="study" class="section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Home</button>
+            <h2>📚 Study Any Subject with AI (Free AI Tutors)</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                Preparing for exams? Need help with homework? AI can be your FREE personal tutor for ANY subject - 
+                Math, Science, Social Studies, English, or any topic. Available 24/7!
+            </p>
+
+            <div class="success-box">
+                <h3>✨ Why AI is Perfect for Studying:</h3>
+                <ul>
+                    <li>📖 Explains any topic in simple language</li>
+                    <li>❓ Answers all your doubts instantly</li>
+                    <li>📝 Creates practice questions and tests</li>
+                    <li>🎯 Teaches at YOUR speed (no pressure)</li>
+                    <li>💰 Completely FREE forever</li>
+                    <li>🌙 Available anytime - day or night</li>
+                </ul>
+            </div>
+
+            <h3>📖 How to Study Any Subject with AI</h3>
+            
+            <h4 style="color: #007bff;">Method 1: Understanding Difficult Topics</h4>
+            <p>When you don't understand something from textbook or class:</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'study1')">📋 Copy</button>
+                <div id="study1">I am studying [SUBJECT NAME] and I don't understand [TOPIC NAME]. I am in [CLASS/STANDARD].
+
+Please explain this topic to me in very simple language with examples. Imagine you are teaching a student who is learning for the first time.
+
+After explaining, give me 3 easy questions to check if I understood.</div>
+            </div>
+            
+            <p><strong>Example:</strong> "I am studying Mathematics and I don't understand Algebra. I am in 10th standard."</p>
+
+            <h4 style="color: #28a745;">Method 2: Solving Homework Problems</h4>
+            <p>When you are stuck on homework or practice problems:</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'study2')">📋 Copy</button>
+                <div id="study2">I have this problem from my [SUBJECT] homework:
+
+[TYPE YOUR QUESTION HERE]
+
+Please:
+1. Explain the concept behind this problem
+2. Show me step-by-step how to solve it
+3. Give me the final answer
+4. Give me 2 similar practice problems to solve myself
+
+Don't just give answer - teach me HOW to solve it so I can do it myself next time.</div>
+            </div>
+
+            <h4 style="color: #dc3545;">Method 3: Exam Preparation</h4>
+            <p>When preparing for tests or exams:</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'study3')">📋 Copy</button>
+                <div id="study3">I have exam coming up for [SUBJECT NAME] in [CLASS/STANDARD]. The chapters are:
+[LIST CHAPTER NAMES]
+
+Please help me prepare:
+1. Create a study plan (what to study each day)
+2. Explain the most important topics I must know
+3. Give me 20 practice questions (with answers) covering all chapters
+4. Share exam tips and tricks for this subject
+5. Create a quick revision summary of all key points
+
+I have [NUMBER] days to prepare. Make the plan realistic.</div>
+            </div>
+
+            <h3>📚 Subject-Specific Study Prompts</h3>
+
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>📐 Mathematics</h4>
+                    <div class="prompt-box" style="margin-top: 10px;">
+                        <button class="copy-btn" onclick="copyPrompt(this, 'mathStudy')">📋 Copy</button>
+                        <div id="mathStudy">I am weak in Mathematics [TOPIC like Algebra/Geometry/Trigonometry]. I am in [CLASS].
+
+Please:
+1. Teach me this topic from basics
+2. Show me formula with examples
+3. Give step-by-step solutions to 3 easy problems
+4. Then give 5 practice problems (easy to hard)
+5. Share tricks to solve faster
+
+Explain like teaching to a beginner. Use simple numbers first.</div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h4>🔬 Science (Physics/Chemistry/Biology)</h4>
+                    <div class="prompt-box" style="margin-top: 10px;">
+                        <button class="copy-btn" onclick="copyPrompt(this, 'scienceStudy')">📋 Copy</button>
+                        <div id="scienceStudy">I am studying [Physics/Chemistry/Biology] chapter on [TOPIC NAME] in [CLASS].
+
+Please:
+1. Explain the main concepts simply
+2. Give real-life examples so I can understand
+3. Show diagrams or describe visuals if needed
+4. List important definitions I must remember
+5. Create 10 important questions for exam
+6. Share memory tricks (mnemonics) if any
+
+Make it easy to understand and remember.</div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h4>📖 English Language</h4>
+                    <div class="prompt-box" style="margin-top: 10px;">
+                        <button class="copy-btn" onclick="copyPrompt(this, 'englishStudy')">📋 Copy</button>
+                        <div id="englishStudy">I want to improve my English for [reading/writing/speaking/grammar]. Current level: [beginner/intermediate].
+
+Please help me:
+1. Learn [grammar rules/vocabulary/sentence formation]
+2. Give me daily practice exercises
+3. Correct my mistakes when I write something
+4. Teach me common phrases used in daily life
+5. Give tips for writing good essays/letters
+
+Start with basics and increase difficulty slowly.</div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h4>🌍 Social Studies (History/Geography/Civics)</h4>
+                    <div class="prompt-box" style="margin-top: 10px;">
+                        <button class="copy-btn" onclick="copyPrompt(this, 'socialStudy')">📋 Copy</button>
+                        <div id="socialStudy">I need to study [History/Geography/Civics] chapter: [CHAPTER NAME] for [CLASS].
+
+Please:
+1. Summarize the chapter in simple points
+2. Explain important dates/names/events
+3. Give me memory tricks to remember facts
+4. Create timeline (for history) or map description (for geography)
+5. Make 15 important questions with answers
+6. Tell me what usually comes in exams from this chapter
+
+Make it interesting and easy to remember.</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>🎯 Special Study Techniques with AI</h3>
+
+            <h4>1️⃣ Create Your Own Tests</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'createTest')">📋 Copy</button>
+                <div id="createTest">Create a practice test for me on [SUBJECT] chapters [LIST CHAPTERS].
+
+Include:
+- 10 Multiple Choice Questions (MCQ)
+- 5 Short Answer Questions
+- 3 Long Answer Questions
+
+After I give my answers, check them and explain where I went wrong. Give marks out of 100.</div>
+            </div>
+
+            <h4>2️⃣ Quick Revision Flashcards</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'flashcards')">📋 Copy</button>
+                <div id="flashcards">Create flashcards for quick revision of [SUBJECT - CHAPTER NAME].
+
+For each important topic:
+- Front: Question or Key Term
+- Back: Answer or Definition
+
+Give me 20 flashcards covering all important points. I will use this for last-minute revision before exam.</div>
+            </div>
+
+            <h4>3️⃣ Explain Like I'm 5 Years Old</h4>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'eli5')">📋 Copy</button>
+                <div id="eli5">I don't understand [TOPIC NAME] at all. Please explain it to me like I am a 5-year-old child.
+
+Use:
+- Very simple words
+- Real-life examples I can relate to
+- Story format if possible
+- No complex technical terms
+
+After simple explanation, gradually add more details so I fully understand it.</div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚡ Power Tips for Studying with AI:</h4>
+                <ul>
+                    <li><strong>Be specific:</strong> Instead of "teach me science" say "teach me photosynthesis in plants"</li>
+                    <li><strong>Ask for examples:</strong> Always say "give me examples" for better understanding</li>
+                    <li><strong>Request practice:</strong> After learning, ask "give me 10 practice questions"</li>
+                    <li><strong>Check your answers:</strong> Ask AI "Is my answer correct?" and paste your answer</li>
+                    <li><strong>Create study schedule:</strong> Ask AI "Create 30-day study plan for my exams"</li>
+                    <li><strong>Don't just copy:</strong> Read AI's explanation and try to understand, don't blindly copy</li>
+                </ul>
+            </div>
+
+            <h3>🏆 Best Free AI Tools for Studying</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>ChatGPT</h4>
+                    <p>🌐 <a href="https://chat.openai.com" target="_blank">chat.openai.com</a></p>
+                    <p>✓ Best for explaining concepts</p>
+                    <p>✓ Can solve math step-by-step</p>
+                    <p>✓ Creates practice tests</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>🌐 <a href="https://gemini.google.com" target="_blank">gemini.google.com</a></p>
+                    <p>✓ Can search internet for latest info</p>
+                    <p>✓ Fast responses</p>
+                    <p>✓ Works with Gmail</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Khan Academy</h4>
+                    <p>🌐 <a href="https://www.khanacademy.org" target="_blank">khanacademy.org</a></p>
+                    <p>✓ Free video lessons</p>
+                    <p>✓ Math, Science, more</p>
+                    <p>✓ Practice exercises</p>
+                </div>
+                <div class="tool-card">
+                    <h4>YouTube + AI</h4>
+                    <p>Strategy: Watch video → Ask AI doubts</p>
+                    <p>✓ Visual learning</p>
+                    <p>✓ Then clarify with ChatGPT</p>
+                    <p>✓ Best of both worlds</p>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h3>📝 Study Routine Suggestion:</h3>
+                <p><strong>Morning (30 min):</strong> Ask AI to explain today's topics</p>
+                <p><strong>Afternoon (30 min):</strong> Do practice problems, check with AI</p>
+                <p><strong>Night (20 min):</strong> Quick revision with AI flashcards</p>
+                <p><strong>Before exam:</strong> Ask AI for last-minute tips and important questions</p>
+            </div>
+
+            <button class="btn-primary" onclick="showSection('jobs')">Next: Find Jobs Online →</button>
+        </div>
+
+        <!-- JOBS SECTION -->
+        <div id="jobs" class="section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Home</button>
+            <h2>💼 Find Jobs Online</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                Now that you have a resume and professional photo, it's time to find jobs! 
+                This section shows you how to search and apply for jobs online.
+            </p>
+
+            <h3>🌐 Best Job Websites for Hyderabad</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>Naukri.com</h4>
+                    <p>Website: <a href="https://www.naukri.com" target="_blank">naukri.com</a></p>
+                    <p>✓ India's #1 job site</p>
+                    <p>✓ Lots of entry-level jobs</p>
+                    <p>✓ Upload resume and apply</p>
+                    <p>✓ Create profile for free</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Indeed India</h4>
+                    <p>Website: <a href="https://www.indeed.co.in" target="_blank">indeed.co.in</a></p>
+                    <p>✓ International + Indian jobs</p>
+                    <p>✓ Search by location</p>
+                    <p>✓ Apply with one click</p>
+                    <p>✓ Easy to use</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Freshersworld</h4>
+                    <p>Website: <a href="https://www.freshersworld.com" target="_blank">freshersworld.com</a></p>
+                    <p>✓ Only for freshers (no experience)</p>
+                    <p>✓ Thousands of entry jobs</p>
+                    <p>✓ Tips for first-time job seekers</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Apna App</h4>
+                    <p>App: Download from Play Store</p>
+                    <p>✓ Jobs for all skill levels</p>
+                    <p>✓ Chat directly with employers</p>
+                    <p>✓ Get job in 24 hours sometimes</p>
+                    <p>✓ Available in Telugu</p>
+                </div>
+            </div>
+
+            <h3>🔍 How to Search for Jobs (Step by Step)</h3>
+            <div class="example-box">
+                <h4>Step 1: Choose Website</h4>
+                <p>Go to Naukri.com or Indeed.co.in</p>
+
+                <h4 style="margin-top: 15px;">Step 2: Create Account</h4>
+                <p>• Click "Register" or "Sign Up"</p>
+                <p>• Use your phone number and create password</p>
+                <p>• Verify with OTP</p>
+
+                <h4 style="margin-top: 15px;">Step 3: Upload Resume</h4>
+                <p>• Click "Upload Resume"</p>
+                <p>• Choose the resume file you created with AI</p>
+                <p>• Fill profile with your details</p>
+
+                <h4 style="margin-top: 15px;">Step 4: Search Jobs</h4>
+                <p>In search box type:</p>
+                <ul>
+                    <li>"Data entry Hyderabad"</li>
+                    <li>"Office assistant Hyderabad"</li>
+                    <li>"Shop assistant Hyderabad"</li>
+                    <li>"Fresher jobs Hyderabad"</li>
+                </ul>
+
+                <h4 style="margin-top: 15px;">Step 5: Apply</h4>
+                <p>• Click on jobs you like</p>
+                <p>• Read requirements carefully</p>
+                <p>• Click "Apply Now"</p>
+                <p>• Your resume will be sent!</p>
+            </div>
+
+            <h3>🤖 Use AI to Find Perfect Jobs</h3>
+            <p>Ask AI to help you search for jobs that match YOUR skills:</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'jobSearch')">📋 Copy</button>
+                <div id="jobSearch">I am looking for entry-level jobs in Hyderabad. Here are my details:
+
+Education: [Your education - 10th/ITI/12th etc.]
+Skills: [Your skills]
+Experience: [Fresher or any experience you have]
+Languages: Telugu, Hindi, Basic English
+Preferred job types: [Office work/Shop assistant/Data entry/Any]
+
+Please suggest:
+1. What types of jobs should I search for?
+2. What keywords should I use on job websites?
+3. Which companies usually hire freshers like me in Hyderabad?
+4. What salary can I expect for entry-level?
+5. Tips to increase my chances of getting hired
+
+Be specific and practical.</div>
+            </div>
+
+            <h3>📝 Prepare for Job Interviews with AI</h3>
+            <p>Before interview, ask AI to help you practice:</p>
+            <div class="prompt-box">
+                <button class="copy-btn" onclick="copyPrompt(this, 'interview')">📋 Copy</button>
+                <div id="interview">I have a job interview for [JOB POSITION] position tomorrow. This is my first interview and I am nervous.
+
+Please help me prepare:
+1. What questions will they ask? (Give me 15 common interview questions)
+2. How should I answer each question? (Give me sample answers)
+3. How should I dress for interview?
+4. What should I carry with me?
+5. Body language tips (how to sit, shake hands, etc.)
+6. What questions should I ask the interviewer?
+7. How to stay calm and confident?
+
+Practice interview: Ask me one question at a time and check my answer.</div>
+            </div>
+
+            <h3>✅ Common Interview Questions (Practice These)</h3>
+            <div class="example-box">
+                <p><strong>1. Tell me about yourself.</strong></p>
+                <p style="margin-left: 20px; color: #666;">Talk about: Name, education, skills, why you want this job (2 minutes max)</p>
+
+                <p style="margin-top: 10px;"><strong>2. Why should we hire you?</strong></p>
+                <p style="margin-left: 20px; color: #666;">Mention: Your skills, hardworking nature, willingness to learn</p>
+
+                <p style="margin-top: 10px;"><strong>3. What are your strengths?</strong></p>
+                <p style="margin-left: 20px; color: #666;">Example: "I am punctual, learn quickly, good with computers"</p>
+
+                <p style="margin-top: 10px;"><strong>4. What are your weaknesses?</strong></p>
+                <p style="margin-left: 20px; color: #666;">Example: "I am still learning English, but I practice every day"</p>
+
+                <p style="margin-top: 10px;"><strong>5. Where do you see yourself in 5 years?</strong></p>
+                <p style="margin-left: 20px; color: #666;">Example: "I want to grow with this company and learn new skills"</p>
+
+                <p style="margin-top: 10px;"><strong>6. Why do you want this job?</strong></p>
+                <p style="margin-left: 20px; color: #666;">Research company and say what you like about it</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Job Search Safety Tips:</h4>
+                <ul>
+                    <li><strong>Never pay money</strong> for job applications or interviews</li>
+                    <li><strong>Verify company</strong> - Search online before applying</li>
+                    <li><strong>Don't share</strong> personal details (Aadhaar, bank account) until you join</li>
+                    <li><strong>Meet in public place</strong> for interviews if not in office</li>
+                    <li><strong>Tell caregiver/friend</strong> where you are going for interview</li>
+                    <li><strong>If offer seems too good</strong> (very high salary, no work), be careful - might be fraud</li>
+                </ul>
+            </div>
+
+            <h3>📱 Job Search on Mobile Phone</h3>
+            <p>Best apps to download from Play Store:</p>
+            <ul>
+                <li><strong>Apna:</strong> Easy interface, Telugu language, quick jobs</li>
+                <li><strong>Naukri App:</strong> Apply to multiple jobs fast</li>
+                <li><strong>LinkedIn:</strong> Professional networking (create profile)</li>
+                <li><strong>Indeed:</strong> Search and apply easily</li>
+            </ul>
+
+            <div class="success-box">
+                <h3>🎯 Daily Job Search Routine:</h3>
+                <p><strong>Morning (15 min):</strong> Check new job postings on 2-3 websites</p>
+                <p><strong>Afternoon (30 min):</strong> Apply to 5-10 jobs that match your skills</p>
+                <p><strong>Evening (10 min):</strong> Check emails/messages for interview calls</p>
+                <p><strong>Weekly:</strong> Update resume if you learn something new</p>
+            </div>
+
+            <button class="btn-primary" onclick="showSection('tools')">Next: See All Free AI Tools →</button>
+        </div>
+
+        <!-- TOOLS SECTION -->
+        <div id="tools" class="section">
+            <button class="back-btn" onclick="showSection('home')">← Back to Home</button>
+            <h2>🛠️ Free AI Tools You Can Use</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                Here is a complete list of FREE AI tools you can use for learning, career, and creativity. 
+                All these tools are available online - just click the links!
+            </p>
+
+            <h3>💬 AI Chat Tools (For Learning & Help)</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>ChatGPT</h4>
+                    <p>🌐 <a href="https://chat.openai.com" target="_blank">chat.openai.com</a></p>
+                    <p><strong>Best For:</strong> Learning, homework, resume, explanations</p>
+                    <p><strong>Cost:</strong> FREE (GPT-3.5)</p>
+                    <p><strong>How to Use:</strong> Type any question and get detailed answer</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>🌐 <a href="https://gemini.google.com" target="_blank">gemini.google.com</a></p>
+                    <p><strong>Best For:</strong> Research, current information, Google integration</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>How to Use:</strong> Sign in with Gmail, ask anything</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Microsoft Copilot</h4>
+                    <p>🌐 <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a></p>
+                    <p><strong>Best For:</strong> Web search + AI answers combined</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>How to Use:</strong> Similar to ChatGPT, can browse web</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Perplexity AI</h4>
+                    <p>🌐 <a href="https://www.perplexity.ai" target="_blank">perplexity.ai</a></p>
+                    <p><strong>Best For:</strong> Research, factual questions, sources</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>How to Use:</strong> Ask questions, get answers with sources</p>
+                </div>
+            </div>
+
+            <h3>🎨 AI Image & Photo Tools</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>Nano Banana</h4>
+                    <p>🌐 Search "Nano Banana AI" on Google</p>
+                    <p><strong>Best For:</strong> Professional headshots, portraits</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Create resume photo</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Canva AI</h4>
+                    <p>🌐 <a href="https://www.canva.com" target="_blank">canva.com</a></p>
+                    <p><strong>Best For:</strong> Design posters, presentations, social media</p>
+                    <p><strong>Cost:</strong> FREE (basic)</p>
+                    <p><strong>Use Case:</strong> Create professional designs easily</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Remove.bg</h4>
+                    <p>🌐 <a href="https://www.remove.bg" target="_blank">remove.bg</a></p>
+                    <p><strong>Best For:</strong> Remove photo background</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Make professional passport-style photos</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Craiyon (DALL-E mini)</h4>
+                    <p>🌐 <a href="https://www.craiyon.com" target="_blank">craiyon.com</a></p>
+                    <p><strong>Best For:</strong> Generate any image from text description</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Create images for projects, fun</p>
+                </div>
+            </div>
+
+            <h3>✍️ AI Writing & Translation Tools</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>Grammarly</h4>
+                    <p>🌐 <a href="https://www.grammarly.com" target="_blank">grammarly.com</a></p>
+                    <p><strong>Best For:</strong> Check English grammar and spelling</p>
+                    <p><strong>Cost:</strong> FREE (basic)</p>
+                    <p><strong>Use Case:</strong> Write correct English emails, applications</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Translate</h4>
+                    <p>🌐 <a href="https://translate.google.com" target="_blank">translate.google.com</a></p>
+                    <p><strong>Best For:</strong> Telugu ↔ English translation</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Translate anything instantly</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>QuillBot</h4>
+                    <p>🌐 <a href="https://quillbot.com" target="_blank">quillbot.com</a></p>
+                    <p><strong>Best For:</strong> Rewrite sentences better, paraphrase</p>
+                    <p><strong>Cost:</strong> FREE (basic)</p>
+                    <p><strong>Use Case:</strong> Improve your writing</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>DeepL Translate</h4>
+                    <p>🌐 <a href="https://www.deepl.com" target="_blank">deepl.com</a></p>
+                    <p><strong>Best For:</strong> Better quality translation</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Accurate English-Telugu translation</p>
+                </div>
+            </div>
+
+            <h3>📚 AI Learning & Education Tools</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>Khan Academy</h4>
+                    <p>🌐 <a href="https://www.khanacademy.org" target="_blank">khanacademy.org</a></p>
+                    <p><strong>Best For:</strong> Learn Math, Science with videos</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Complete courses from basics</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Duolingo</h4>
+                    <p>🌐 <a href="https://www.duolingo.com" target="_blank">duolingo.com</a></p>
+                    <p><strong>Best For:</strong> Learn English (or any language)</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> 10 minutes daily = learn language</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Coursera</h4>
+                    <p>🌐 <a href="https://www.coursera.org" target="_blank">coursera.org</a></p>
+                    <p><strong>Best For:</strong> Free courses from universities</p>
+                    <p><strong>Cost:</strong> FREE (audit mode)</p>
+                    <p><strong>Use Case:</strong> Learn professional skills with certificates</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>YouTube + AI Summary</h4>
+                    <p>🌐 YouTube + ChatGPT</p>
+                    <p><strong>Best For:</strong> Watch video → Ask AI to explain</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Understand complex topics</p>
+                </div>
+            </div>
+
+            <h3>💼 AI Career & Productivity Tools</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>LinkedIn</h4>
+                    <p>🌐 <a href="https://www.linkedin.com" target="_blank">linkedin.com</a></p>
+                    <p><strong>Best For:</strong> Professional networking, job search</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Build professional profile, connect with employers</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Notion AI</h4>
+                    <p>🌐 <a href="https://www.notion.so" target="_blank">notion.so</a></p>
+                    <p><strong>Best For:</strong> Notes, to-do lists, planning with AI help</p>
+                    <p><strong>Cost:</strong> FREE (personal use)</p>
+                    <p><strong>Use Case:</strong> Organize your study/job search</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Resume.io</h4>
+                    <p>🌐 <a href="https://resume.io" target="_blank">resume.io</a></p>
+                    <p><strong>Best For:</strong> Professional resume templates</p>
+                    <p><strong>Cost:</strong> FREE (basic templates)</p>
+                    <p><strong>Use Case:</strong> Format resume beautifully</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Calendly</h4>
+                    <p>🌐 <a href="https://calendly.com" target="_blank">calendly.com</a></p>
+                    <p><strong>Best For:</strong> Schedule interviews/meetings</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Professional scheduling</p>
+                </div>
+            </div>
+
+            <h3>🎮 Fun AI Tools (Practice & Explore)</h3>
+            <div class="grid-2">
+                <div class="tool-card">
+                    <h4>Quick, Draw!</h4>
+                    <p>🌐 <a href="https://quickdraw.withgoogle.com" target="_blank">quickdraw.withgoogle.com</a></p>
+                    <p><strong>Best For:</strong> AI guessing game</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Understand how AI learns patterns</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Teachable Machine</h4>
+                    <p>🌐 <a href="https://teachablemachine.withgoogle.com" target="_blank">teachablemachine.withgoogle.com</a></p>
+                    <p><strong>Best For:</strong> Train your own AI model</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Learn how AI training works</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>AI Dungeon</h4>
+                    <p>🌐 <a href="https://play.aidungeon.io" target="_blank">play.aidungeon.io</a></p>
+                    <p><strong>Best For:</strong> AI-powered text adventure game</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Practice English storytelling</p>
+                </div>
+
+                <div class="tool-card">
+                    <h4>AutoDraw</h4>
+                    <p>🌐 <a href="https://www.autodraw.com" target="_blank">autodraw.com</a></p>
+                    <p><strong>Best For:</strong> AI-assisted drawing</p>
+                    <p><strong>Cost:</strong> FREE</p>
+                    <p><strong>Use Case:</strong> Draw better with AI suggestions</p>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h3>💡 How to Choose Right AI Tool:</h3>
+                <p><strong>For Studying:</strong> ChatGPT or Google Gemini</p>
+                <p><strong>For Resume:</strong> ChatGPT + Canva or Resume.io</p>
+                <p><strong>For Photo:</strong> Nano Banana + Remove.bg</p>
+                <p><strong>For English:</strong> Grammarly + Duolingo</p>
+                <p><strong>For Jobs:</strong> Naukri + LinkedIn</p>
+                <p><strong>For Practice:</strong> Quick Draw + Teachable Machine</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Important Reminders About AI Tools:</h4>
+                <ul>
+                    <li>All these tools are FREE for basic use</li>
+                    <li>Some have paid premium features (you don't need them)</li>
+                    <li>Always verify AI information from multiple sources</li>
+                    <li>AI makes mistakes sometimes - use your judgment</li>
+                    <li>Don't share personal sensitive information with AI</li>
+                    <li>Use AI to LEARN, not just to copy answers</li>
+                </ul>
+            </div>
+
+            <button class="btn-primary" onclick="showSection('home')">← Back to Home</button>
+        </div>
+
+        <footer>
+            <p><strong>AI Career Toolkit</strong> - Your Free Resource for Success</p>
+            <p style="margin-top: 10px; opacity: 0.8;">
+                Remember: AI is a tool to help you learn and grow. Use it wisely, work hard, and success will follow! 💪
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                Questions or need help? Ask your caregiver to reach out to: <strong>Eclatech Solutions</strong>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function copyPrompt(button, elementId) {
+            const promptText = document.getElementById(elementId).textContent;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(promptText).then(() => {
+                // Change button text
+                button.textContent = '✅ Copied!';
+                button.classList.add('copied');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.textContent = '📋 Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Could not copy. Please select and copy manually.');
+            });
+        }
+
+        // Show appropriate section on load
+        window.addEventListener('load', () => {
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
